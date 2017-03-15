@@ -1,7 +1,5 @@
 package tahrir;
 
-import com.vaadin.ui.VerticalLayout;
-
 /**
  * Created by oliverl3 on 2/15/14.
  */

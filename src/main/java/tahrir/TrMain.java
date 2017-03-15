@@ -1,19 +1,17 @@
 package tahrir;
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tahrir.tools.TrUtils;
-import tahrir.ui.TrMainWindow;
+import org.springframework.boot.SpringApplication;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 
+@SpringBootApplication
 public class TrMain {
 
 	public static Logger logger = LoggerFactory.getLogger(TrMain.class);
@@ -28,13 +26,12 @@ public class TrMain {
 				System.exit(-1);
 			}
 		}
+        // TODO this seems to be unused
 		final TrMainConfig config = readConfiguration(new File(rootDirectory, options.configFile));
 
         try {
             final TrNode node = TrUtils.TestUtils.makeNode(9003, false, false, false, true, 0, 0);
-            final TrMainWindow mainWindow = new TrMainWindow(node, "Default");
-            mainWindow.getContentPanel().revalidate();
-
+            SpringApplication.run(TrMain.class, args);
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

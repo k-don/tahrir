@@ -9,6 +9,20 @@
         <vaadin.version>7.0.0</vaadin.version>
 
 	</properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
@@ -20,6 +34,10 @@
 				<enabled>false</enabled>
 			</releases>
 		</pluginRepository>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
 	</pluginRepositories>
 	<build>
 
@@ -106,7 +124,7 @@
                         <lib>${settings.localRepository}/org/testng/testng/5.14/testng-5.14.jar</lib>
                         <lib>${settings.localRepository}/bouncycastle/bcprov-jdk16/140/bcprov-jdk16-140.jar</lib>
                         <lib>${settings.localRepository}/com/google/guava/guava/14.0-rc3/guava-14.0-rc3.jar</lib>
-                        <lib>${settings.localRepository}/ch/qos/logback/logback-core/0.9.28/logback-core-0.9.28.jar</lib>
+                        <lib>${settings.localRepository}/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar</lib>
                         <lib>${settings.localRepository}/com/miglayout/miglayout/3.7.4/miglayout-3.7.4.jar</lib>
                         <lib>${settings.localRepository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar</lib>
                         <lib>${settings.localRepository}/com/google/inject/guice/3.0/guice-3.0.jar</lib>
@@ -119,6 +137,10 @@
                     <maxMemory>2g</maxMemory>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -162,7 +184,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>0.9.28</version>
+			<version>1.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.miglayout</groupId>
@@ -197,26 +219,9 @@
 			<version>3.1</version>
 		</dependency>
         <dependency>
-      			<groupId>com.vaadin</groupId>
-      			<artifactId>vaadin-server</artifactId>
-      			<version>${vaadin.version}</version>
-      		</dependency>
-      		<dependency>
-      			<groupId>com.vaadin</groupId>
-      			<artifactId>vaadin-client-compiled</artifactId>
-      			<version>${vaadin.version}</version>
-      		</dependency>
-      		<dependency>
-      			<groupId>com.vaadin</groupId>
-      			<artifactId>vaadin-client</artifactId>
-      			<version>${vaadin.version}</version>
-      			<scope>provided</scope>
-      		</dependency>
-      		<dependency>
-      			<groupId>com.vaadin</groupId>
-      			<artifactId>vaadin-themes</artifactId>
-      			<version>${vaadin.version}</version>
-      		</dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <!-- TEST -->
         <dependency>
@@ -229,6 +234,16 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.8.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
         </dependency>
         
 	</dependencies>
