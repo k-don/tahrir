@@ -1,8 +1,10 @@
 target
+node_modules
 temp-testng-customsuite.xml
 test-output/
 sproutcore
 src/main/resources/web-interface/tahrir/tmp
+src/main/resources/static/built
 logback*.xml
 *.iml
 *.iws
