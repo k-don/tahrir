@@ -175,6 +175,12 @@
                             <goal>webpack</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>javascript tests</id>
+                        <goals>
+                            <goal>karma</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 		</plugins>
