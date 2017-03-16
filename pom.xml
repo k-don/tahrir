@@ -124,7 +124,8 @@
                         <lib>${settings.localRepository}/org/testng/testng/5.14/testng-5.14.jar</lib>
                         <lib>${settings.localRepository}/bouncycastle/bcprov-jdk16/140/bcprov-jdk16-140.jar</lib>
                         <lib>${settings.localRepository}/com/google/guava/guava/14.0-rc3/guava-14.0-rc3.jar</lib>
-                        <lib>${settings.localRepository}/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar</lib>
+                        <!-- TODO This fails the build sometimes -->
+                        <!--<lib>${settings.localRepository}/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar</lib>-->
                         <lib>${settings.localRepository}/com/miglayout/miglayout/3.7.4/miglayout-3.7.4.jar</lib>
                         <lib>${settings.localRepository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar</lib>
                         <lib>${settings.localRepository}/com/google/inject/guice/3.0/guice-3.0.jar</lib>
@@ -140,6 +141,41 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.3</version>
+                <configuration>
+                    <installDirectory>target</installDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v4.4.5</nodeVersion>
+                            <npmVersion>3.9.2</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>webpack build</id>
+                        <goals>
+                            <goal>webpack</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 		</plugins>
 	</build>
@@ -221,6 +257,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!-- TEST -->

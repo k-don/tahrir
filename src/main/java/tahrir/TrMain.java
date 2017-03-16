@@ -30,7 +30,7 @@ public class TrMain {
 		final TrMainConfig config = readConfiguration(new File(rootDirectory, options.configFile));
 
         try {
-            final TrNode node = TrUtils.TestUtils.makeNode(9003, false, false, false, true, 0, 0);
+//            final TrNode node = TrUtils.TestUtils.makeNode(9003, false, false, false, true, 0, 0);
             SpringApplication.run(TrMain.class, args);
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
