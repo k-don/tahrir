@@ -3,6 +3,8 @@ package tahrir.spring.controllers.pojo;
 public class RestBroadcastMessage {
     private String message;
 
+    public RestBroadcastMessage() {}
+
     public RestBroadcastMessage(String message) {
         this.message = message;
     }

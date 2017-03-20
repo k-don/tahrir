@@ -1,6 +1,5 @@
 package tahrir.spring.controllers;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import tahrir.TrNode;
+import tahrir.io.net.broadcasts.IncomingBroadcastMessageHandler;
 import tahrir.io.net.broadcasts.broadcastMessages.BroadcastMessage;
 import tahrir.spring.controllers.pojo.RestBroadcastMessage;
 import tahrir.tools.TrUtils;
 
-import java.net.SocketException;
-
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -36,6 +34,9 @@ public class BroadcastMessagesControllerTest {
     public void postValidBroadcastMessage() throws Exception {
         String message = "<mb><txt>This is a valid message.</txt></mb>";
         String json = TrUtils.gson.toJson(new RestBroadcastMessage(message));
+
+        node.mbClasses.incomingMbHandler = mock(IncomingBroadcastMessageHandler.class);
+
         mvc.perform(MockMvcRequestBuilders.post("/api/broadcastMessages")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))

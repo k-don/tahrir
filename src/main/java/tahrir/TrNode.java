@@ -159,7 +159,7 @@ public class TrNode {
 		public final BroadcastMessageBroadcaster mbScheduler;
         public final IdentityStore identityStore;
 		public final ShortenedPublicKeyFinder spkFinder;
-		public final IncomingBroadcastMessageHandler incomingMbHandler;
+		public IncomingBroadcastMessageHandler incomingMbHandler;
 		public final BroadcastMessageOutbox mbsForBroadcast;
 		public final BroadcastMessageInbox mbsForViewing;
         public final EventBus eventBus= new EventBus();
