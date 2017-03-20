@@ -5,6 +5,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import tahrir.tools.TrUtils;
 import org.springframework.boot.SpringApplication;
 
@@ -93,5 +94,11 @@ public class TrMain {
         public boolean startGui = false;
 
         public TrNodeConfig node = new TrNodeConfig();
+    }
+
+    @Bean
+    public TrNode trNode() throws Exception {
+        // TODO create this using the new operator
+        return TrUtils.TestUtils.makeNode(9003, false, false, false, true, 0, 0);
     }
 }
