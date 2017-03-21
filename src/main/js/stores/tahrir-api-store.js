@@ -7,8 +7,14 @@ class TahrirApiStore extends Reflux.Store {
         this.listenables = Actions;
     }
 
-    postBroadcastMessage() {
-        console.log('message posted to store');
+    postBroadcastMessage(message) {
+        const client = new XMLHttpRequest();
+        client.open('POST', '/api/broadcastMessages', false);
+        client.setRequestHeader('Content-Type', 'application/json');
+        client.send(message);
+        if (client.status !== 200) {
+            console.error('Error posting microblog');
+        }
     }
 }
 

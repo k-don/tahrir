@@ -18,7 +18,8 @@ class PostForm extends Reflux.Component {
     }
 
     handleSubmit = () => {
-        Actions.postBroadcastMessage();
+        const {message} = this.state;
+        Actions.postBroadcastMessage(message);
     };
 
     handleChange = (e) => {

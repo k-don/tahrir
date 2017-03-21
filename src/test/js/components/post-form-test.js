@@ -29,9 +29,9 @@ describe('PostForm', function () {
             TestUtils.Simulate.click(button);
         });
 
-        it('posts a message', () => {
+        it('posts a message with the text area contents wrapped in XML', () => {
             expect(Actions.postBroadcastMessage).toHaveBeenCalled();
-        })
+        });
     });
 
 
