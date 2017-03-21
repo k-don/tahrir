@@ -1,21 +1,24 @@
 'use strict';
 
 const React = require('react');
-const ReactDOM = require('react-dom');
 const FormGroup = require('react-bootstrap/lib/FormGroup');
-const ControlLabel = require('react-bootstrap/lib/ControlLabel');
 const FormControl = require('react-bootstrap/lib/FormControl');
 const Form = require('react-bootstrap/lib/Form');
 const Button = require('react-bootstrap/lib/Button');
+const Actions = require('../actions/tahrir-api-actions');
+// TODO we can remove this after we have another component that uses the store
+const Reflux = require('reflux');
+const TahrirStore = require('../stores/tahrir-api-store');
 
-class PostForm extends React.Component {
+class PostForm extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {message: ''};
+        this.store = TahrirStore;
     }
 
     handleSubmit = () => {
-        console.log(this.state.message);
+        Actions.postBroadcastMessage();
     };
 
     handleChange = (e) => {

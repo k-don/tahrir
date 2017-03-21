@@ -1,8 +1,9 @@
 'use strict';
 
-const PostForm = require('../../main/js/post-form');
 const React = require('react');
 const TestUtils = require('react-addons-test-utils');
+const PostForm = require('../../../main/js/components/post-form');
+const Actions = require('../../../main/js/actions/tahrir-api-actions');
 
 describe('PostForm', function () {
     let component;
@@ -20,5 +21,18 @@ describe('PostForm', function () {
         const domComponent = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
         expect(domComponent).toBeDefined();
     });
+
+    describe('when the post button is clicked', () => {
+        beforeEach(() => {
+            spyOn(Actions, 'postBroadcastMessage');
+            const button = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
+            TestUtils.Simulate.click(button);
+        });
+
+        it('posts a message', () => {
+            expect(Actions.postBroadcastMessage).toHaveBeenCalled();
+        })
+    });
+
 
 });

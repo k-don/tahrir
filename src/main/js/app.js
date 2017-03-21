@@ -2,7 +2,7 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const PostForm = require('./post-form');
+const PostForm = require('./components/post-form');
 
 class App extends React.Component {
     render() {
@@ -14,9 +14,10 @@ class App extends React.Component {
     }
 }
 
-module.exports = App;
 
 ReactDOM.render(
     <App />,
     document.getElementById('react')
 );
+
+module.exports = App;
