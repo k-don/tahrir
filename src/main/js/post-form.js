@@ -27,7 +27,7 @@ class PostForm extends React.Component {
             <Form inline>
                 <FormGroup>
                     <FormControl value={this.state.message} onChange={this.handleChange} componentClass="textarea" placeholder="Message" />
-                    <Button onClick={this.handleSubmit}>
+                    <Button bsStyle="primary" onClick={this.handleSubmit}>
                         Post
                     </Button>
                 </FormGroup>
