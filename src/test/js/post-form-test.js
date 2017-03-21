@@ -5,9 +5,20 @@ const React = require('react');
 const TestUtils = require('react-addons-test-utils');
 
 describe('PostForm', function () {
-    it('renders the form', function () {
-        const component = TestUtils.renderIntoDocument(<PostForm />);
-        const {innerHTML} = TestUtils.findRenderedDOMComponentWithClass(component, 'app');
-        expect(innerHTML).toContain('<textarea>');
+    let component;
+
+    beforeEach(() => {
+        component = TestUtils.renderIntoDocument(<PostForm />);
     });
+
+    it('renders the form', () => {
+        const domComponent = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
+        expect(domComponent).toBeDefined();
+    });
+
+    it('renders the button', () => {
+        const domComponent = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
+        expect(domComponent).toBeDefined();
+    });
+
 });
