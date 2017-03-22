@@ -11,8 +11,8 @@ class TahrirApiStore extends Reflux.Store {
         const client = new XMLHttpRequest();
         client.open('POST', '/api/broadcastMessages', false);
         client.setRequestHeader('Content-Type', 'application/json');
-        client.send(message);
-        if (client.status !== 200) {
+        client.send(JSON.stringify({message}));
+        if (client.status !== 201) {
             console.error('Error posting microblog');
         }
     }

@@ -23,14 +23,25 @@ describe('PostForm', function () {
     });
 
     describe('when the post button is clicked', () => {
+        const message = 'This is a message';
+
         beforeEach(() => {
             spyOn(Actions, 'postBroadcastMessage');
+            const textArea = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
+            textArea.value = message;
+            TestUtils.Simulate.change(textArea);
+
             const button = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
             TestUtils.Simulate.click(button);
         });
 
-        it('posts a message with the text area contents wrapped in XML', () => {
-            expect(Actions.postBroadcastMessage).toHaveBeenCalled();
+        it('posts a message with the text area contents', () => {
+            expect(Actions.postBroadcastMessage).toHaveBeenCalledWith(message);
+        });
+
+        it('clears the textarea', () => {
+            const textArea = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
+            expect(textArea.value).toBe('');
         });
     });
 
