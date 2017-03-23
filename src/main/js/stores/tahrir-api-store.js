@@ -5,6 +5,7 @@ class TahrirApiStore extends Reflux.Store {
     constructor() {
         super();
         this.listenables = Actions;
+        this.state = {microblogs: []};
     }
 
     postBroadcastMessage(message) {
@@ -15,6 +16,14 @@ class TahrirApiStore extends Reflux.Store {
         if (client.status !== 201) {
             console.error('Error posting microblog');
         }
+    }
+
+    listBroadcastMessages() {
+        this.setState({microblogs: [
+            {message: 'This is the first message'},
+            {message: 'This is the second message'},
+            {message: 'This is the third message'}
+        ]});
     }
 }
 

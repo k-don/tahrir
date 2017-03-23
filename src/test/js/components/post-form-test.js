@@ -5,7 +5,7 @@ const TestUtils = require('react-addons-test-utils');
 const PostForm = require('../../../main/js/components/post-form');
 const Actions = require('../../../main/js/actions/tahrir-api-actions');
 
-describe('PostForm', function () {
+describe('PostForm', () => {
     let component;
 
     beforeEach(() => {
