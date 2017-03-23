@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const Actions = require('../actions/tahrir-api-actions');
-const Reflux = require('reflux');
-const TahrirStore = require('../stores/tahrir-api-store');
+import React from "react";
+import Reflux from "reflux";
+import Actions from "../actions/tahrir-api-actions";
+import TahrirStore from "../stores/tahrir-api-store";
 
 class MicroblogPage extends Reflux.Component {
     constructor(props) {

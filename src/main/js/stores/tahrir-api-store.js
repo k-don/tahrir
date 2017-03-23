@@ -1,5 +1,7 @@
-const Reflux = require('reflux');
-const Actions = require('../actions/tahrir-api-actions');
+'use strict';
+
+import Reflux from "reflux";
+import Actions from "../actions/tahrir-api-actions";
 
 class TahrirApiStore extends Reflux.Store {
     constructor() {

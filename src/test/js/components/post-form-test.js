@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const TestUtils = require('react-addons-test-utils');
-const PostForm = require('../../../main/js/components/post-form');
-const Actions = require('../../../main/js/actions/tahrir-api-actions');
+import React from "react";
+import TestUtils from "react-addons-test-utils";
+import PostForm from "../../../main/js/components/post-form";
+import Actions from "../../../main/js/actions/tahrir-api-actions";
 
 describe('PostForm', () => {
     let component;

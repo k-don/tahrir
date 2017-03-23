@@ -1,10 +1,10 @@
 'use strict';
 
-const React = require('react');
-const ReactDOM = require('react-dom');
-const TestUtils = require('react-addons-test-utils');
-const MicroblogPage = require('../../../main/js/components/microblog-page');
-const Actions = require('../../../main/js/actions/tahrir-api-actions');
+import Actions from "../../../main/js/actions/tahrir-api-actions";
+import React from "react";
+import ReactDOM from "react-dom";
+import TestUtils from "react-addons-test-utils";
+import MicroblogPage from "../../../main/js/components/microblog-page";
 
 describe('MicroblogPage', () => {
     let component;

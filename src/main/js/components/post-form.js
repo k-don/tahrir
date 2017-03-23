@@ -1,14 +1,15 @@
 'use strict';
 
-const React = require('react');
-const FormGroup = require('react-bootstrap/lib/FormGroup');
-const FormControl = require('react-bootstrap/lib/FormControl');
-const Form = require('react-bootstrap/lib/Form');
-const Button = require('react-bootstrap/lib/Button');
-const Actions = require('../actions/tahrir-api-actions');
+import React from "react";
+import FormGroup from "react-bootstrap/lib/FormGroup";
+import FormControl from "react-bootstrap/lib/FormControl";
+import Form from "react-bootstrap/lib/Form";
+import Button from "react-bootstrap/lib/Button";
+import Actions from "../actions/tahrir-api-actions";
+
 // TODO we can remove this after we have another component that uses the store
-const Reflux = require('reflux');
-const TahrirStore = require('../stores/tahrir-api-store');
+import Reflux from "reflux";
+import TahrirStore from "../stores/tahrir-api-store";
 
 class PostForm extends Reflux.Component {
     constructor(props) {

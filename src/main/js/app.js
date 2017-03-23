@@ -1,9 +1,9 @@
 'use strict';
 
-const React = require('react');
-const ReactDOM = require('react-dom');
-const PostForm = require('./components/post-form');
-const MicroblogPage = require('./components/microblog-page');
+import React from "react";
+import ReactDOM from "react-dom";
+import PostForm from "./components/post-form";
+import MicroblogPage from "./components/microblog-page";
 
 class App extends React.Component {
     render() {

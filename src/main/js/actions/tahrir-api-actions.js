@@ -1,4 +1,6 @@
-const Reflux = require('reflux');
+'use strict';
+
+import Reflux from "reflux";
 
 const TahrirActions = Reflux.createActions([
     'postBroadcastMessage',
