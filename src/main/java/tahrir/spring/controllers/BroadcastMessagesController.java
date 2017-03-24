@@ -44,17 +44,20 @@ public class BroadcastMessagesController {
         List<RestBroadcastMessage> broadcastMessages = Lists.newArrayList();
         for (BroadcastMessage broadcastMessage : microblogSet) {
             String message = broadcastMessage.signedBroadcastMessage.parsedBroadcastMessage.getPlainTextBroadcastMessage();
-            broadcastMessages.add(new RestBroadcastMessage(message));
+            String nickname = broadcastMessage.signedBroadcastMessage.getAuthor().getNick();
+            broadcastMessages.add(new RestBroadcastMessage(message, nickname));
         }
-        addTestMicroblogs(broadcastMessages);
+
+        // TODO remove this, only for testing
+//        addTestMicroblogs(broadcastMessages);
+
         return new ResponseEntity<List<RestBroadcastMessage>>(broadcastMessages, HttpStatus.OK);
     }
 
-    // TODO remove this, only for testing
     private void addTestMicroblogs(List<RestBroadcastMessage> broadcastMessages) {
-        broadcastMessages.add(new RestBroadcastMessage("Hello world"));
-        broadcastMessages.add(new RestBroadcastMessage("Foo bar"));
-        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol"));
+        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity"));
+        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity"));
+        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity"));
     }
 
 

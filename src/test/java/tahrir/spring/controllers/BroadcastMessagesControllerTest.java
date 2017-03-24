@@ -73,9 +73,14 @@ public class BroadcastMessagesControllerTest {
         Type listType = new TypeToken<ArrayList<RestBroadcastMessage>>(){}.getType();
         ArrayList<RestBroadcastMessage> restBroadcastMessages = TrUtils.gson.fromJson(json, listType);
         assertEquals(restBroadcastMessages.size(), 3);
+
         assertEquals(restBroadcastMessages.get(0).getMessage(), "This is the third message");
         assertEquals(restBroadcastMessages.get(1).getMessage(), "This is the second message");
         assertEquals(restBroadcastMessages.get(2).getMessage(), "This is the first message");
+
+        assertEquals(restBroadcastMessages.get(0).getNickname(), "Default");
+        assertEquals(restBroadcastMessages.get(1).getNickname(), "Default");
+        assertEquals(restBroadcastMessages.get(2).getNickname(), "Default");
     }
 
     private BroadcastMessage createBroadcastMessage(String message) {
