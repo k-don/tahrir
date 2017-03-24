@@ -1,5 +1,6 @@
 package tahrir.spring.controllers;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,11 @@ import tahrir.io.net.broadcasts.broadcastMessages.ParsedBroadcastMessage;
 import tahrir.io.net.broadcasts.broadcastMessages.SignedBroadcastMessage;
 import tahrir.spring.controllers.pojo.RestBroadcastMessage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.SortedSet;
+
 @RestController
 public class BroadcastMessagesController {
 
@@ -25,12 +31,23 @@ public class BroadcastMessagesController {
 
     @RequestMapping(value = "/api/broadcastMessages", method = RequestMethod.POST)
     public ResponseEntity<?> postMessage(@RequestBody RestBroadcastMessage restBroadcastMessage) {
-        //TODO: get the language from config or settings page.
         ParsedBroadcastMessage parsedBroadcastMessage = ParsedBroadcastMessage.createFromPlaintext(restBroadcastMessage.getMessage(), "en", node.mbClasses.identityStore, System.currentTimeMillis());
         SignedBroadcastMessage signedBroadcastMessage = new SignedBroadcastMessage(parsedBroadcastMessage, node.getConfig().currentUserIdentity);
         BroadcastMessage broadcastMessage = new BroadcastMessage(signedBroadcastMessage);
         node.mbClasses.incomingMbHandler.handleInsertion(broadcastMessage);
         return new ResponseEntity<String>("Success", HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/api/broadcastMessages", method = RequestMethod.GET)
+    public ResponseEntity<?> getMessages() {
+        SortedSet<BroadcastMessage> microblogSet = node.mbClasses.mbsForViewing.getMicroblogSet();
+        List<RestBroadcastMessage> broadcastMessages = Lists.newArrayList();
+        for (BroadcastMessage broadcastMessage : microblogSet) {
+            String message = broadcastMessage.signedBroadcastMessage.parsedBroadcastMessage.getPlainTextBroadcastMessage();
+            broadcastMessages.add(new RestBroadcastMessage(message));
+        }
+
+        return new ResponseEntity<List<RestBroadcastMessage>>(broadcastMessages, HttpStatus.OK);
     }
 
 }
