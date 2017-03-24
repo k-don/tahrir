@@ -1,25 +1,23 @@
 'use strict';
 
-import React from "react";
-import TestUtils from "react-addons-test-utils";
-import PostForm from "../../../main/js/components/post-form";
-import Actions from "../../../main/js/actions/tahrir-api-actions";
+import React from 'react';
+import PostForm from '../../../main/js/components/post-form';
+import Actions from '../../../main/js/actions/tahrir-api-actions';
+import {mount} from 'enzyme';
 
 describe('PostForm', () => {
-    let component;
+    let wrapper;
 
     beforeEach(() => {
-        component = TestUtils.renderIntoDocument(<PostForm />);
+        wrapper = mount(<PostForm />);
     });
 
     it('renders the form', () => {
-        const domComponent = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
-        expect(domComponent).toBeDefined();
+        expect(wrapper.find('textarea')).toBeDefined();
     });
 
     it('renders the button', () => {
-        const domComponent = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
-        expect(domComponent).toBeDefined();
+        expect(wrapper.find('button')).toBeDefined();
     });
 
     describe('when the post button is clicked', () => {
@@ -27,12 +25,10 @@ describe('PostForm', () => {
 
         beforeEach(() => {
             spyOn(Actions, 'postBroadcastMessage');
-            const textArea = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
-            textArea.value = message;
-            TestUtils.Simulate.change(textArea);
+            const textArea = wrapper.find('textarea');
+            textArea.simulate('change', {target: {value: message}});
 
-            const button = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
-            TestUtils.Simulate.click(button);
+            wrapper.find('button').simulate('click');
         });
 
         it('posts a message with the text area contents', () => {
@@ -40,8 +36,8 @@ describe('PostForm', () => {
         });
 
         it('clears the textarea', () => {
-            const textArea = TestUtils.findRenderedDOMComponentWithTag(component, 'textarea');
-            expect(textArea.value).toBe('');
+            const textArea = wrapper.find('textarea');
+            expect(textArea.props().value).toBe('');
         });
     });
 
