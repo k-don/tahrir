@@ -23,9 +23,7 @@ class TahrirApiStore extends Reflux.Store {
             }
         }).then(
             () => {
-                const {microblogs} = this.state;
-                microblogs.unshift({message});
-                this.setState({microblogs});
+                this.listBroadcastMessages();
             },
             () => {
                 console.error('Error posting microblog');
