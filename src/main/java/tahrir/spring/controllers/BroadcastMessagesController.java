@@ -14,8 +14,6 @@ import tahrir.io.net.broadcasts.broadcastMessages.ParsedBroadcastMessage;
 import tahrir.io.net.broadcasts.broadcastMessages.SignedBroadcastMessage;
 import tahrir.spring.controllers.pojo.RestBroadcastMessage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.SortedSet;
 
@@ -45,7 +43,8 @@ public class BroadcastMessagesController {
         for (BroadcastMessage broadcastMessage : microblogSet) {
             String message = broadcastMessage.signedBroadcastMessage.parsedBroadcastMessage.getPlainTextBroadcastMessage();
             String nickname = broadcastMessage.signedBroadcastMessage.getAuthor().getNick();
-            broadcastMessages.add(new RestBroadcastMessage(message, nickname));
+            long timeCreated = broadcastMessage.signedBroadcastMessage.parsedBroadcastMessage.getTimeCreated();
+            broadcastMessages.add(new RestBroadcastMessage(message, nickname, timeCreated));
         }
 
         // TODO remove this, only for testing
@@ -55,9 +54,9 @@ public class BroadcastMessagesController {
     }
 
     private void addTestMicroblogs(List<RestBroadcastMessage> broadcastMessages) {
-        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity"));
-        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity"));
-        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity"));
+        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity", 1));
+        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity", 2));
+        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity", 3));
     }
 
 

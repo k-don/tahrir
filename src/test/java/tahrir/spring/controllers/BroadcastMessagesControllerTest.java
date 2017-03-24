@@ -25,12 +25,14 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,7 +47,7 @@ public class BroadcastMessagesControllerTest {
     @Test
     public void postValidBroadcastMessage() throws Exception {
         String message = "This is a valid message.";
-        String json = TrUtils.gson.toJson(new RestBroadcastMessage(message));
+        String json = TrUtils.gson.toJson(new RestBroadcastMessage(message, 1));
 
         node.mbClasses.incomingMbHandler = mock(IncomingBroadcastMessageHandler.class);
 
@@ -81,6 +83,10 @@ public class BroadcastMessagesControllerTest {
         assertEquals(restBroadcastMessages.get(0).getNickname(), "Default");
         assertEquals(restBroadcastMessages.get(1).getNickname(), "Default");
         assertEquals(restBroadcastMessages.get(2).getNickname(), "Default");
+
+        assertTrue(restBroadcastMessages.get(0).getTimeCreated() != 0);
+        assertTrue(restBroadcastMessages.get(1).getTimeCreated() != 0);
+        assertTrue(restBroadcastMessages.get(2).getTimeCreated() != 0);
     }
 
     private BroadcastMessage createBroadcastMessage(String message) {
