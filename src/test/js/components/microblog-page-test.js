@@ -12,9 +12,9 @@ describe('MicroblogPage', () => {
         spyOn(Actions, 'listBroadcastMessages');
         wrapper = mount(<MicroblogPage />);
         wrapper.setState({microblogs: [
-            {message: 'This is the first message', nickname: 'nomel7'},
-            {message: 'This is the second message', nickname: 'sanity'},
-            {message: 'This is the third message', nickname: 'Default'}
+            {message: 'This is the first message', nickname: 'nomel7', timeCreated: new Date().getTime()},
+            {message: 'This is the second message', nickname: 'sanity', timeCreated: new Date(Date.now() - 60 * 1000).getTime()},
+            {message: 'This is the third message', nickname: 'Default', timeCreated: new Date(Date.now() - 2 * 60 * 60 * 1000).getTime()}
         ]});
     });
 
@@ -36,6 +36,15 @@ describe('MicroblogPage', () => {
         expect(wrappedNicknames.get(0).textContent).toEqual('nomel7');
         expect(wrappedNicknames.get(1).textContent).toEqual('sanity');
         expect(wrappedNicknames.get(2).textContent).toEqual('Default');
+    });
+
+
+    it('renders the timestamps', () => {
+        const wrappedTimestamps = wrapper.find('.microblog-timestamp');
+        expect(wrappedTimestamps.length).toBe(3);
+        expect(wrappedTimestamps.get(0).textContent).toEqual('');
+        expect(wrappedTimestamps.get(1).textContent).toEqual('1m');
+        expect(wrappedTimestamps.get(2).textContent).toEqual('2h');
     });
 });
 

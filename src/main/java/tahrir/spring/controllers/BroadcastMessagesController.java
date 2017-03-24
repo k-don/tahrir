@@ -48,15 +48,15 @@ public class BroadcastMessagesController {
         }
 
         // TODO remove this, only for testing
-//        addTestMicroblogs(broadcastMessages);
+        addTestMicroblogs(broadcastMessages);
 
         return new ResponseEntity<List<RestBroadcastMessage>>(broadcastMessages, HttpStatus.OK);
     }
 
     private void addTestMicroblogs(List<RestBroadcastMessage> broadcastMessages) {
-        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity", 1));
-        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity", 2));
-        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity", 3));
+        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity", System.currentTimeMillis()));
+        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity", System.currentTimeMillis() - 60 * 1000));
+        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity", System.currentTimeMillis() - 2 * 60 * 60 * 1000));
     }
 
 

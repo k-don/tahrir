@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Anonymous microblogging service",
   "dependencies": {
+    "javascript-time-ago": "^0.4.9",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
