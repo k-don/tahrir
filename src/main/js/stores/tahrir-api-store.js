@@ -2,6 +2,8 @@
 
 import Reflux from "reflux";
 import Actions from "../actions/tahrir-api-actions";
+import Rest from "rest";
+import errorCode from "rest/interceptor/errorCode";
 
 class TahrirApiStore extends Reflux.Store {
     constructor() {
@@ -11,13 +13,20 @@ class TahrirApiStore extends Reflux.Store {
     }
 
     postBroadcastMessage(message) {
-        const client = new XMLHttpRequest();
-        client.open('POST', '/api/broadcastMessages', false);
-        client.setRequestHeader('Content-Type', 'application/json');
-        client.send(JSON.stringify({message}));
-        if (client.status !== 201) {
-            console.error('Error posting microblog');
-        }
+        const client = Rest.wrap(errorCode, {code: 202});
+        client({
+            method: 'POST',
+            path: '/api/broadcastMessages',
+            entity: JSON.stringify({message}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(
+            () => {/* success */},
+            () => {
+                console.error('Error posting microblog');
+            }
+        );
     }
 
     listBroadcastMessages() {
