@@ -7,15 +7,10 @@ import Form from "react-bootstrap/lib/Form";
 import Button from "react-bootstrap/lib/Button";
 import Actions from "../actions/tahrir-api-actions";
 
-// TODO we can remove this after we have another component that uses the store
-import Reflux from "reflux";
-import TahrirStore from "../stores/tahrir-api-store";
-
-class PostForm extends Reflux.Component {
+class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {message: ''};
-        this.store = TahrirStore;
     }
 
     handleSubmit = () => {
