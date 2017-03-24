@@ -18,9 +18,12 @@ class MicroblogPage extends Reflux.Component {
 
     render() {
         const microblogPosts = this.state.microblogs.map((microblog, i) => {
-            const {message} = microblog;
+            const {message, nickname} = microblog;
             return (
                 <div className="microblog-post" key={i}>
+                    <div>
+                        <span className="microblog-nickname">{nickname}</span>
+                    </div>
                     <p className="microblog-message">{message}</p>
                 </div>
             );
