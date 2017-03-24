@@ -14,8 +14,15 @@ module.exports = function (config) {
             devtool: 'inline-source-map',
             module: {
                 loaders: [
-                    {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+                    {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['airbnb', 'es2015', 'react', 'stage-0']}},
+                    {test: /\.json$/, loader: 'json-loader'}
                 ]
+            },
+            externals: {
+                'cheerio': 'window',
+                'react/addons': true,
+                'react/lib/ExecutionEnvironment': true,
+                'react/lib/ReactContext': true
             }
         },
         webpackServer: {

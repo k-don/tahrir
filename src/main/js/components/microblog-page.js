@@ -1,9 +1,9 @@
 'use strict';
 
-import React from "react";
-import Reflux from "reflux";
-import Actions from "../actions/tahrir-api-actions";
-import TahrirStore from "../stores/tahrir-api-store";
+import React from 'react';
+import Reflux from 'reflux';
+import Actions from '../actions/tahrir-api-actions';
+import TahrirStore from '../stores/tahrir-api-store';
 
 class MicroblogPage extends Reflux.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class MicroblogPage extends Reflux.Component {
             const {message} = microblog;
             return (
                 <div className="microblog-post" key={i}>
-                    <p className="microblog=message">{message}</p>
+                    <p className="microblog-message">{message}</p>
                 </div>
             );
         });
