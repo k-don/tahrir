@@ -46,8 +46,17 @@ public class BroadcastMessagesController {
             String message = broadcastMessage.signedBroadcastMessage.parsedBroadcastMessage.getPlainTextBroadcastMessage();
             broadcastMessages.add(new RestBroadcastMessage(message));
         }
-
+        addTestMicroblogs(broadcastMessages);
         return new ResponseEntity<List<RestBroadcastMessage>>(broadcastMessages, HttpStatus.OK);
     }
+
+    // TODO remove this, only for testing
+    private void addTestMicroblogs(List<RestBroadcastMessage> broadcastMessages) {
+        broadcastMessages.add(new RestBroadcastMessage("Hello world"));
+        broadcastMessages.add(new RestBroadcastMessage("Foo bar"));
+        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol"));
+    }
+
+
 
 }

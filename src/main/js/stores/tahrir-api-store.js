@@ -22,7 +22,11 @@ class TahrirApiStore extends Reflux.Store {
                 'Content-Type': 'application/json'
             }
         }).then(
-            () => {/* success */},
+            () => {
+                const {microblogs} = this.state;
+                microblogs.unshift({message});
+                this.setState({microblogs});
+            },
             () => {
                 console.error('Error posting microblog');
             }
@@ -30,11 +34,22 @@ class TahrirApiStore extends Reflux.Store {
     }
 
     listBroadcastMessages() {
-        this.setState({microblogs: [
-            {message: 'This is the first message'},
-            {message: 'This is the second message'},
-            {message: 'This is the third message'}
-        ]});
+        const client = Rest.wrap(errorCode, {code: 201});
+        client({
+            method: 'GET',
+            path: '/api/broadcastMessages',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(
+            response => {
+                const {entity} = response;
+                this.setState({microblogs: JSON.parse(entity)});
+            },
+            () => {
+                console.error('Error loading microblogs');
+            }
+        );
     }
 }
 
