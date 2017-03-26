@@ -25,7 +25,7 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <Form inline>
+            <Form inline className="post-form">
                 <FormGroup>
                     <FormControl value={this.state.message} onChange={this.handleChange}
                                  componentClass="textarea" placeholder="Message" />
