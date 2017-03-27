@@ -11,7 +11,7 @@ class TahrirApiStore extends Reflux.Store {
         this.listenables = Actions;
         this.state = {
             microblogs: [],
-            identity: null
+            userIdentity: {nickname: ''}
         };
     }
 

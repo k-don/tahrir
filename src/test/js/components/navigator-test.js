@@ -9,8 +9,8 @@ describe('Navigator', () => {
     let wrapper;
 
     beforeEach(() => {
-        const identity = {nickname: '@nomel7'};
-        wrapper = shallow(<Navigator userIdentity={identity} />);
+        wrapper = shallow(<Navigator />);
+        wrapper.setState({userIdentity: {nickname: '@nomel7'}});
     });
 
     it('renders the navigation items', () => {

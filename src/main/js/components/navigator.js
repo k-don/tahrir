@@ -1,15 +1,18 @@
 'use strict';
 
 import React from "react";
+import Reflux from "reflux";
 import MicroblogPage from "./microblog-page"
 import Nav from "react-bootstrap/lib/Nav";
 import NavItem from "react-bootstrap/lib/NavItem";
+import TahrirStore from '../stores/tahrir-api-store';
 import {mentionsFilter} from "../helpers/microblog-filter";
 
-class Navigator extends React.Component {
+class Navigator extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {activeKey: 1};
+        this.store = TahrirStore;
     }
 
     onSelect = (eventKey) => {
@@ -17,8 +20,7 @@ class Navigator extends React.Component {
     };
 
     render() {
-        const {activeKey} = this.state;
-        const {userIdentity: {nickname}} = this.props;
+        const {userIdentity: {nickname}, activeKey} = this.state;
         const filter = mentionsFilter(nickname);
         const tabs = {
             1: <MicroblogPage />,
