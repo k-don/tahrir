@@ -16,15 +16,13 @@ describe('microblogFilter', () => {
         });
 
         it('filters messages with a user mentioned', () => {
-            const filter = partialRight(mentionsFilter, '@nomel');
-            const result = microblogs.filter(filter);
+            const result = microblogs.filter(mentionsFilter('@nomel'));
             expect(result.length).toBe(1);
             expect(result[0].message).toBe('This is the third message which mentions @nomel');
         });
 
         it('filters messages with a user mentioned that contains numbers', () => {
-            const filter = partialRight(mentionsFilter, '@user1here');
-            const result = microblogs.filter(filter);
+            const result = microblogs.filter(mentionsFilter('@user1here'));
             expect(result.length).toBe(1);
             expect(result[0].message).toBe('Mention for @user1here here');
         });
