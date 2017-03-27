@@ -15,5 +15,8 @@ describe('App', () => {
         expect(wrapper.find('.post-form').length).toBe(1);
     });
 
+    it('renders the navigator', () => {
+        expect(wrapper.find('.navigator').length).toBe(1);
+    });
 });
 

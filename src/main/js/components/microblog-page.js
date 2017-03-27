@@ -25,7 +25,7 @@ class MicroblogPage extends Reflux.Component {
         const timeAgo = new TimeAgo('en-US');
         const twitterStyle = timeAgo.style.twitter();
 
-            const microblogPosts = this.state.microblogs.map((microblog, i) => {
+        const microblogPosts = this.state.microblogs.map((microblog, i) => {
             const {message, nickname, timeCreated} = microblog;
             const readableTime = timeAgo.format(new Date(timeCreated), twitterStyle);
             return (
