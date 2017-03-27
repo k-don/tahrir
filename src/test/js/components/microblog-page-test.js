@@ -46,5 +46,20 @@ describe('MicroblogPage', () => {
         expect(wrappedTimestamps.get(1).textContent).toEqual('1m');
         expect(wrappedTimestamps.get(2).textContent).toEqual('2h');
     });
+
+    describe('when there is a filter', () => {
+        beforeEach(() => {
+            const filter = microblog => {
+                return microblog.nickname === 'nomel7';
+            };
+            wrapper.setProps({filter});
+        });
+
+        it('only renders the microblogs for that filter', () => {
+            const wrappedMessages = wrapper.find('.microblog-message');
+            expect(wrappedMessages.length).toBe(1);
+            expect(wrappedMessages.get(0).textContent).toEqual('This is the first message');
+        });
+    });
 });
 

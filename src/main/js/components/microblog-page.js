@@ -24,20 +24,23 @@ class MicroblogPage extends Reflux.Component {
     render() {
         const timeAgo = new TimeAgo('en-US');
         const twitterStyle = timeAgo.style.twitter();
+        const {filter = () => {return true}} = this.props;
 
-        const microblogPosts = this.state.microblogs.map((microblog, i) => {
-            const {message, nickname, timeCreated} = microblog;
-            const readableTime = timeAgo.format(new Date(timeCreated), twitterStyle);
-            return (
-                <div className="microblog-post" key={i}>
-                    <div>
-                        <span className="microblog-nickname">{nickname}</span>
-                        <span className="microblog-timestamp">{readableTime}</span>
+        const microblogPosts = this.state.microblogs
+            .filter(filter)
+            .map((microblog, i) => {
+                const {message, nickname, timeCreated} = microblog;
+                const readableTime = timeAgo.format(new Date(timeCreated), twitterStyle);
+                return (
+                    <div className="microblog-post" key={i}>
+                        <div>
+                            <span className="microblog-nickname">{nickname}</span>
+                            <span className="microblog-timestamp">{readableTime}</span>
+                        </div>
+                        <p className="microblog-message">{message}</p>
                     </div>
-                    <p className="microblog-message">{message}</p>
-                </div>
-            );
-        });
+                );
+            });
 
         return (
             <div className="microblog-posts">
