@@ -62,8 +62,8 @@ class TahrirApiStore extends Reflux.Store {
                 'Content-Type': 'application/json'
             }
         }).then(
-            ({entity: {nickname: identity}}) => {
-                this.setState({identity});
+            ({entity}) => {
+                this.setState({userIdentity: {nickname: JSON.parse(entity).nickname}});
             },
             () => {
                 console.error('Error getting identity');
