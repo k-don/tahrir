@@ -4,6 +4,7 @@ import React from "react";
 import MicroblogPage from "./microblog-page"
 import Nav from "react-bootstrap/lib/Nav";
 import NavItem from "react-bootstrap/lib/NavItem";
+import {mentionsFilter} from "../helpers/microblog-filter";
 
 class Navigator extends React.Component {
     constructor(props) {
@@ -17,6 +18,14 @@ class Navigator extends React.Component {
 
     render() {
         const {activeKey} = this.state;
+        const {userIdentity: {nickname}} = this.props;
+        const filter = mentionsFilter(nickname);
+        const tabs = {
+            1: <MicroblogPage />,
+            2: null,
+            3: <MicroblogPage filter={filter} />
+        };
+        const display = tabs[activeKey];
 
         return (
             <div className="navigator">
@@ -25,7 +34,7 @@ class Navigator extends React.Component {
                     <NavItem eventKey={2}>Following</NavItem>
                     <NavItem eventKey={3}>Mentions</NavItem>
                 </Nav>
-                <MicroblogPage />
+                {display}
             </div>
         );
     }

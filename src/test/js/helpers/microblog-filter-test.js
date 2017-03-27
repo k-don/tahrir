@@ -1,7 +1,6 @@
 'use strict';
 
 import {mentionsFilter} from '../../../main/js/helpers/microblog-filter';
-import partialRight from 'lodash.partialright'
 
 describe('microblogFilter', () => {
     describe('#mentionsFilter', () => {

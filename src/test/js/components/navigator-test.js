@@ -3,12 +3,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import Navigator from '../../../../src/main/js/components/navigator'
+import {mentionsFilter} from '../../../../src/main/js/helpers/microblog-filter'
 
-describe('App', () => {
+describe('Navigator', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Navigator />);
+        const identity = {nickname: '@nomel7'};
+        wrapper = shallow(<Navigator userIdentity={identity} />);
     });
 
     it('renders the navigation items', () => {
@@ -18,7 +20,11 @@ describe('App', () => {
     });
 
     it('shows the all selected by default', () => {
-       expect(wrapper.find('Nav').prop('activeKey')).toBe(1);
+        expect(wrapper.find('Nav').prop('activeKey')).toBe(1);
+    });
+
+    it('shows the default microblog page', () => {
+        expect(wrapper.find('MicroblogPage').prop('filter')).toBeUndefined();
     });
 
     describe('when mentions is clicked', () => {
@@ -28,6 +34,11 @@ describe('App', () => {
 
         it('updates the mentions nav item as selected', () => {
             expect(wrapper.find('Nav').prop('activeKey')).toBe(3);
+        });
+
+        it('updates the microblog page', () => {
+            const filter = mentionsFilter('@nomel7');
+            expect(wrapper.find('MicroblogPage').prop('filter').toString()).toEqual(filter.toString());
         });
 
     });

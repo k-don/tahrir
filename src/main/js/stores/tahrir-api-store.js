@@ -9,7 +9,10 @@ class TahrirApiStore extends Reflux.Store {
     constructor() {
         super();
         this.listenables = Actions;
-        this.state = {microblogs: []};
+        this.state = {
+            microblogs: [],
+            identity: null
+        };
     }
 
     postBroadcastMessage(message) {
@@ -48,6 +51,25 @@ class TahrirApiStore extends Reflux.Store {
                 console.error('Error loading microblogs');
             }
         );
+    }
+
+    getIdentity() {
+        const client = Rest.wrap(errorCode, {code: 201});
+        client({
+            method: 'GET',
+            path: '/api/identity',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(
+            ({entity: {nickname: identity}}) => {
+                this.setState({identity});
+            },
+            () => {
+                console.error('Error getting identity');
+            }
+        );
+
     }
 }
 
