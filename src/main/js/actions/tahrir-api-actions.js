@@ -4,7 +4,8 @@ import Reflux from "reflux";
 
 const TahrirActions = Reflux.createActions([
     'postBroadcastMessage',
-    'listBroadcastMessages'
+    'listBroadcastMessages',
+    'getIdentity'
 ]);
 
 module.exports = TahrirActions;
