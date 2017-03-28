@@ -33,7 +33,7 @@ class Navigator extends Reflux.Component {
             <div>
                 <header>
                     <h1>Tahrir</h1>
-                    <Nav bsStyle="tabs" activeKey={activeKey} onSelect={this.onSelect}>
+                    <Nav bsStyle="pills" activeKey={activeKey} onSelect={this.onSelect}>
                         <NavItem eventKey={1}>All</NavItem>
                         <NavItem eventKey={2}>Following</NavItem>
                         <NavItem eventKey={3}>Mentions</NavItem>

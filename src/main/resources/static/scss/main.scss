@@ -1,12 +1,20 @@
+body {
+  background-color: #14699C;
+}
+
 header, footer, .content {
   position: absolute;
   right: 0;
-  left: 0
+  left: 0;
+  width: 720px;
+  margin: 0 auto;
+  background-color: white;
 }
 
 header {
-  height: 100px;
+  height: 110px;
   top: 0;
+  border-radius: 0 0 3px 3px;
 }
 
 footer {
@@ -18,4 +26,5 @@ footer {
   top: 110px;
   bottom: 100px;
   overflow: scroll;
+  margin-top: 15px;
 }
