@@ -16,9 +16,7 @@ class App extends Reflux.Component {
     render() {
         return (
             <div className="app">
-                <div className="content">
-                    <Navigator />
-                </div>
+                <Navigator />
                 <footer>
                     <PostForm />
                 </footer>
