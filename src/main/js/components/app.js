@@ -5,9 +5,8 @@ import Reflux from "reflux";
 import PostForm from "./post-form";
 import Navigator from "./navigator";
 import Actions from "../actions/tahrir-api-actions";
-import TahrirStore from '../stores/tahrir-api-store';
-
-require('../../resources/static/scss/main.scss');
+import TahrirStore from "../stores/tahrir-api-store";
+import Header from "./header";
 
 class App extends Reflux.Component {
     componentDidMount() {
@@ -18,6 +17,7 @@ class App extends Reflux.Component {
     render() {
         return (
             <div className="app">
+                <Header />
                 <Navigator />
                 <PostForm />
             </div>

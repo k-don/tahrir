@@ -25,15 +25,17 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <Form inline className="post-form">
-                <FormGroup>
-                    <FormControl value={this.state.message} onChange={this.handleChange}
-                                 componentClass="textarea" placeholder="Message" />
-                    <Button bsStyle="primary" onClick={this.handleSubmit}>
-                        Post
-                    </Button>
-                </FormGroup>
-            </Form>
+            <footer className="post-form">
+                <Form inline >
+                    <FormGroup>
+                        <FormControl value={this.state.message} onChange={this.handleChange}
+                                     componentClass="textarea" placeholder="Message" />
+                        <Button bsStyle="primary" onClick={this.handleSubmit}>
+                            Post
+                        </Button>
+                    </FormGroup>
+                </Form>
+            </footer>
         )
     }
 }
