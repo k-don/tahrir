@@ -7,6 +7,8 @@ import Navigator from "./navigator";
 import Actions from "../actions/tahrir-api-actions";
 import TahrirStore from '../stores/tahrir-api-store';
 
+require('../../resources/static/scss/main.scss');
+
 class App extends Reflux.Component {
     componentDidMount() {
         this.store = TahrirStore;
