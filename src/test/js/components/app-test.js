@@ -27,8 +27,5 @@ describe('App', () => {
         expect(wrapper.find('Navigator').length).toBe(1);
     });
 
-    it('renders the header', () => {
-       expect(wrapper.find('Header').length).toBe(1);
-    });
 });
 

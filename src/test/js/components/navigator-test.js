@@ -13,6 +13,11 @@ describe('Navigator', () => {
         wrapper.setState({userIdentity: {nickname: '@nomel7'}});
     });
 
+    it('renders the header', () => {
+       expect(wrapper.find('header').length).toBe(1);
+       expect(wrapper.find('h1').length).toBe(1);
+    });
+
     it('renders the navigation items', () => {
         expect(wrapper.find('NavItem').children().contains('All')).toBe(true);
         expect(wrapper.find('NavItem').children().contains('Following')).toBe(true);

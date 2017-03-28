@@ -30,13 +30,18 @@ class Navigator extends Reflux.Component {
         const display = tabs[activeKey];
 
         return (
-            <div className="navigator">
-                <Nav bsStyle="tabs" activeKey={activeKey} onSelect={this.onSelect}>
-                    <NavItem eventKey={1}>All</NavItem>
-                    <NavItem eventKey={2}>Following</NavItem>
-                    <NavItem eventKey={3}>Mentions</NavItem>
-                </Nav>
-                {display}
+            <div>
+                <header>
+                    <h1>Tahrir</h1>
+                    <Nav bsStyle="tabs" activeKey={activeKey} onSelect={this.onSelect}>
+                        <NavItem eventKey={1}>All</NavItem>
+                        <NavItem eventKey={2}>Following</NavItem>
+                        <NavItem eventKey={3}>Mentions</NavItem>
+                    </Nav>
+                </header>
+                <div className="content">
+                    {display}
+                </div>
             </div>
         );
     }
