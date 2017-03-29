@@ -22,6 +22,10 @@ describe('MicroblogPage', () => {
        expect(Actions.listBroadcastMessages).toHaveBeenCalled();
     });
 
+    it('renders the post form', () => {
+        expect(wrapper.find('PostForm').length).toBe(1);
+    });
+
     it('renders the microblog messages', () => {
         const wrappedMessages = wrapper.find('.microblog-message');
         expect(wrappedMessages.length).toBe(3);

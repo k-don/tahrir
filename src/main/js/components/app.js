@@ -2,7 +2,6 @@
 
 import React from "react";
 import Reflux from "reflux";
-import PostForm from "./post-form";
 import Navigator from "./navigator";
 import Actions from "../actions/tahrir-api-actions";
 import TahrirStore from "../stores/tahrir-api-store";
@@ -17,9 +16,6 @@ class App extends Reflux.Component {
         return (
             <div className="app">
                 <Navigator />
-                <footer>
-                    <PostForm />
-                </footer>
             </div>
         )
     }

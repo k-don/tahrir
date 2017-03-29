@@ -19,10 +19,6 @@ describe('App', () => {
         expect(Actions.getIdentity).toHaveBeenCalled();
     });
 
-    it('renders the post form', () => {
-        expect(wrapper.find('PostForm').length).toBe(1);
-    });
-
     it('renders the navigator', () => {
         expect(wrapper.find('Navigator').length).toBe(1);
     });

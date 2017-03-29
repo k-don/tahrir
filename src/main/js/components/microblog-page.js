@@ -4,6 +4,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import Actions from '../actions/tahrir-api-actions';
 import TahrirStore from '../stores/tahrir-api-store';
+import PostForm from "./post-form";
 import TimeAgo from 'javascript-time-ago'
 
 TimeAgo.locale(require('javascript-time-ago/locales/en'));
@@ -43,8 +44,11 @@ class MicroblogPage extends Reflux.Component {
             });
 
         return (
-            <div className="microblog-posts">
-                {microblogPosts}
+            <div>
+                <PostForm />
+                <div className="microblog-posts">
+                    {microblogPosts}
+                </div>
             </div>
         )
     }

@@ -26,11 +26,11 @@ class PostForm extends React.Component {
     render() {
         return (
             <footer className="post-form">
-                <Form inline >
+                <Form inline>
                     <FormGroup>
                         <FormControl value={this.state.message} onChange={this.handleChange}
-                                     componentClass="textarea" placeholder="Message" />
-                        <Button bsStyle="primary" onClick={this.handleSubmit}>
+                                     placeholder="Message" />
+                        <Button onClick={this.handleSubmit}>
                             Post
                         </Button>
                     </FormGroup>
