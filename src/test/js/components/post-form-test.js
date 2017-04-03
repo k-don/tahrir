@@ -13,11 +13,11 @@ describe('PostForm', () => {
     });
 
     it('renders the form', () => {
-        expect(wrapper.find('textarea')).toBeDefined();
+        expect(wrapper.find('input').length).toBe(1);
     });
 
     it('renders the button', () => {
-        expect(wrapper.find('button')).toBeDefined();
+        expect(wrapper.find('button').length).toBe(1);
     });
 
     describe('when the post button is clicked', () => {
@@ -25,7 +25,7 @@ describe('PostForm', () => {
 
         beforeEach(() => {
             spyOn(Actions, 'postBroadcastMessage');
-            const textArea = wrapper.find('textarea');
+            const textArea = wrapper.find('input');
             textArea.simulate('change', {target: {value: message}});
 
             wrapper.find('button').simulate('click');
@@ -36,7 +36,7 @@ describe('PostForm', () => {
         });
 
         it('clears the textarea', () => {
-            const textArea = wrapper.find('textarea');
+            const textArea = wrapper.find('input');
             expect(textArea.props().value).toBe('');
         });
     });
