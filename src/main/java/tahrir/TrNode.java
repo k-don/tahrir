@@ -157,7 +157,7 @@ public class TrNode {
 
     public static class MicrobloggingClasses {
 		public final BroadcastMessageBroadcaster mbScheduler;
-        public final IdentityStore identityStore;
+        public IdentityStore identityStore;
 		public final ShortenedPublicKeyFinder spkFinder;
 		public IncomingBroadcastMessageHandler incomingMbHandler;
 		public final BroadcastMessageOutbox mbsForBroadcast;

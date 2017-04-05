@@ -1,5 +1,6 @@
 package tahrir.spring.controllers;
 
+import com.google.common.base.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import tahrir.TrConstants;
 import tahrir.TrNode;
+import tahrir.io.net.broadcasts.IdentityStore;
 import tahrir.io.net.broadcasts.IncomingBroadcastMessageHandler;
+import tahrir.io.net.broadcasts.UserIdentity;
 import tahrir.io.net.broadcasts.broadcastMessages.BroadcastMessage;
 import tahrir.spring.controllers.pojo.RestBroadcastMessage;
 import tahrir.spring.controllers.pojo.RestIdentity;
@@ -45,4 +49,20 @@ public class IdentityControllerTest {
         RestIdentity identity = TrUtils.gson.fromJson(json, RestIdentity.class);
         assertEquals(identity.getNickname(), node.getConfig().currentUserIdentity.getNick());
     }
+
+    @Test
+    public void postValidIdentity() throws Exception {
+        String nickname = "@nomel7";
+        String json = TrUtils.gson.toJson(new RestIdentity(nickname));
+
+        node.mbClasses.identityStore = mock(IdentityStore.class);
+        UserIdentity expectedIdentity = new UserIdentity(nickname, node.getRemoteNodeAddress().publicKey, Optional.of(node.getPrivateNodeId().privateKey));
+
+        mvc.perform(MockMvcRequestBuilders.post("/api/identity")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isCreated());
+        verify(node.mbClasses.identityStore).addIdentityWithLabel(TrConstants.OWN, expectedIdentity);
+    }
+
 }
