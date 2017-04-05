@@ -20,7 +20,7 @@ class Navigator extends Reflux.Component {
     };
 
     render() {
-        const {userIdentity: {nickname}, activeKey} = this.state;
+        const {identity: {nickname}, activeKey} = this.state;
         const filter = mentionsFilter(nickname);
         const tabs = {
             1: <MicroblogPage />,

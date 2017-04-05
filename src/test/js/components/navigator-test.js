@@ -10,7 +10,7 @@ describe('Navigator', () => {
 
     beforeEach(() => {
         wrapper = shallow(<Navigator />);
-        wrapper.setState({userIdentity: {nickname: '@nomel7'}});
+        wrapper.setState({identity: {nickname: '@nomel7'}});
     });
 
     it('renders the header', () => {

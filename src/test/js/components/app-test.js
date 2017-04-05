@@ -9,18 +9,36 @@ describe('App', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<App />);
+        spyOn(Actions, 'getIdentity');
+        wrapper = mount(<App />);
     });
 
     it('updates the identity', () => {
-        spyOn(Actions, 'getIdentity');
-        spyOn(Actions, 'listBroadcastMessages');
-        wrapper = mount(<App />);
         expect(Actions.getIdentity).toHaveBeenCalled();
     });
 
-    it('renders the navigator', () => {
-        expect(wrapper.find('Navigator').length).toBe(1);
+    it('renders the login window', () => {
+        expect(wrapper.find('Login').length).toBe(1);
+    });
+
+    describe('when the user is Default', () => {
+        beforeEach(() => {
+            wrapper.setState({identity: {nickname: 'Default'}});
+        });
+
+        it('renders the login window', () => {
+            expect(wrapper.find('Login').length).toBe(1);
+        });
+    });
+
+    describe('when the user is logged in', () => {
+        beforeEach(() => {
+            wrapper.setState({identity: {nickname: '@nomel7'}});
+        });
+
+        it('renders the navigator', () => {
+            expect(wrapper.find('Navigator').length).toBe(1);
+        });
     });
 
 });

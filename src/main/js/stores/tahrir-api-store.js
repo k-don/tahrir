@@ -11,7 +11,7 @@ class TahrirApiStore extends Reflux.Store {
         this.listenables = Actions;
         this.state = {
             microblogs: [],
-            userIdentity: {nickname: ''}
+            identity: {nickname: null}
         };
     }
 
@@ -63,13 +63,31 @@ class TahrirApiStore extends Reflux.Store {
             }
         }).then(
             ({entity}) => {
-                this.setState({userIdentity: {nickname: JSON.parse(entity).nickname}});
+                this.setState({identity: {nickname: JSON.parse(entity).nickname}});
             },
             () => {
                 console.error('Error getting identity');
             }
         );
+    }
 
+    postIdentity({nickname}) {
+        const client = Rest.wrap(errorCode, {code: 202});
+        client({
+            method: 'POST',
+            path: '/api/identity',
+            entity: JSON.stringify({nickname}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(
+            () => {
+                this.getIdentity();
+            },
+            () => {
+                console.error('Error getting identity');
+            }
+        );
     }
 }
 
