@@ -85,7 +85,7 @@ class TahrirApiStore extends Reflux.Store {
                 this.getIdentity();
             },
             () => {
-                console.error('Error getting identity');
+                console.error('Error posting identity');
             }
         );
     }

@@ -7,6 +7,11 @@ module.exports = {
             const {message} = microblog;
             return message.match(regex);
         };
+    },
 
+    authorFilter: (author) => {
+        return microblog => {
+            return microblog.nickname === author;
+        };
     }
 };

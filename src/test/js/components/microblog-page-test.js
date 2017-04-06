@@ -1,6 +1,7 @@
 'use strict';
 
-import Actions from '../../../main/js/actions/tahrir-api-actions';
+import APIActions from '../../../main/js/actions/tahrir-api-actions';
+import UIActions from '../../../main/js/actions/tahrir-ui-actions';
 import React from 'react';
 import MicroblogPage from '../../../main/js/components/microblog-page';
 import {mount} from 'enzyme';
@@ -9,7 +10,7 @@ describe('MicroblogPage', () => {
     let wrapper;
 
     beforeEach(() => {
-        spyOn(Actions, 'listBroadcastMessages');
+        spyOn(APIActions, 'listBroadcastMessages');
         wrapper = mount(<MicroblogPage />);
         wrapper.setState({microblogs: [
             {message: 'This is the first message', nickname: 'nomel7', timeCreated: new Date().getTime()},
@@ -19,7 +20,7 @@ describe('MicroblogPage', () => {
     });
 
     it('calls the listBroadcastMessages API', () => {
-       expect(Actions.listBroadcastMessages).toHaveBeenCalled();
+       expect(APIActions.listBroadcastMessages).toHaveBeenCalled();
     });
 
     it('renders the post form', () => {
@@ -63,6 +64,17 @@ describe('MicroblogPage', () => {
             const wrappedMessages = wrapper.find('.microblog-message');
             expect(wrappedMessages.length).toBe(1);
             expect(wrappedMessages.get(0).textContent).toEqual('This is the first message');
+        });
+    });
+
+    describe('when a nickname is clicked', () => {
+        beforeEach(() => {
+            spyOn(UIActions, 'updateAuthorPage');
+            wrapper.find('.microblog-nickname').first().simulate('click');
+        });
+
+        it('displays the microblog author page', () => {
+            expect(UIActions.updateAuthorPage).toHaveBeenCalled();
         });
     });
 });
