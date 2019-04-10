@@ -31,7 +31,7 @@ public class TrMain {
         try {
             SpringApplication.run(TrMain.class, args);
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new RuntimeException("Spring failed to launch application");
         }
 
         System.out.println("main method complete");
