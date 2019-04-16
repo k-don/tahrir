@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>2.0.5.RELEASE</version>
     </parent>
 
     <repositories>
@@ -92,7 +92,7 @@
                     <dependency>
                         <groupId>net.sf.proguard</groupId>
                         <artifactId>proguard-base</artifactId>
-                        <version>5.3.2</version>
+                        <version>6.0.3</version>
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>
@@ -226,7 +226,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.2.1</version>
+			<version>1.2.3</version>
 		</dependency>
 		<dependency>
 			<groupId>com.miglayout</groupId>

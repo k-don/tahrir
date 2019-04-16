@@ -1,5 +1,6 @@
 target
 node_modules
+package-lock.json
 temp-testng-customsuite.xml
 test-output/
 sproutcore
