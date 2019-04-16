@@ -122,7 +122,7 @@
                         <lib>${settings.localRepository}/org/apache/commons/commons-math/2.2/commons-math-2.2.jar</lib>
                         <lib>${settings.localRepository}/args4j/args4j/2.0.16/args4j-2.0.16.jar</lib>
                         <lib>${settings.localRepository}/org/testng/testng/5.14/testng-5.14.jar</lib>
-                        <lib>${settings.localRepository}/bouncycastle/bcprov-jdk16/140/bcprov-jdk16-140.jar</lib>
+                        <lib>${settings.localRepository}/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46.jar</lib>
                         <lib>${settings.localRepository}/com/google/guava/guava/14.0-rc3/guava-14.0-rc3.jar</lib>
                         <!-- TODO This fails the build sometimes -->
                         <!--<lib>${settings.localRepository}/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar</lib>-->
@@ -209,9 +209,9 @@
 			<version>2.0.16</version>
 		</dependency>
 		<dependency>
-			<groupId>bouncycastle</groupId>
-			<artifactId>bcprov-jdk16</artifactId>
-			<version>140</version>
+			<groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk16</artifactId>
+            <version>1.46</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
