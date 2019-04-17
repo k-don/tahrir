@@ -23,9 +23,9 @@ class Navigator extends Reflux.Component {
         const {identity: {nickname}, activeKey} = this.state;
         const filter = mentionsFilter(nickname);
         const tabs = {
-            1: <MicroblogPage />,
+            1: <MicroblogPage name={'Feed for ' + nickname}/>,
             2: null,
-            3: <MicroblogPage filter={filter} />
+            3: <MicroblogPage filter={filter} name={'Mentions for ' + nickname} />
         };
         const display = tabs[activeKey];
 

@@ -11,7 +11,7 @@ describe('MicroblogPage', () => {
 
     beforeEach(() => {
         spyOn(APIActions, 'listBroadcastMessages');
-        wrapper = mount(<MicroblogPage />);
+        wrapper = mount(<MicroblogPage name={"John"} />);
         wrapper.setState({microblogs: [
             {message: 'This is the first message', nickname: 'nomel7', timeCreated: new Date().getTime()},
             {message: 'This is the second message', nickname: 'sanity', timeCreated: new Date(Date.now() - 60 * 1000).getTime()},
@@ -25,6 +25,11 @@ describe('MicroblogPage', () => {
 
     it('renders the post form', () => {
         expect(wrapper.find('PostForm').length).toBe(1);
+    });
+
+    it('renders the header', () => {
+        expect(wrapper.find('.microblog-page-name').length).toBe(1);
+        expect(wrapper.find('.microblog-page-name').get(0).textContent).toBe("John");
     });
 
     it('renders the microblog messages', () => {

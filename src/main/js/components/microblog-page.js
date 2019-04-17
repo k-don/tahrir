@@ -20,7 +20,7 @@ class MicroblogPage extends Reflux.Component {
     }
 
     render() {
-        const {filter = () => {return true}} = this.props;
+        const {filter = () => {return true}, name} = this.props;
         const {microblogs} = this.state;
 
         const microblogPosts = microblogs
@@ -32,6 +32,7 @@ class MicroblogPage extends Reflux.Component {
         return (
             <div>
                 <MicroblogAuthorPage microblogs={microblogs} />
+                <h2 className="microblog-page-name">{name}</h2>
                 <PostForm />
                 <div className="microblog-posts">
                     {microblogPosts}
