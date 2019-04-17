@@ -16,6 +16,7 @@ import java.io.IOException;
 public class TrMain {
 
 	public static Logger logger = LoggerFactory.getLogger(TrMain.class);
+	private int port = 9003;
 
 	public static void main(final String[] args) {
 		final CommandLineOptions options = readCommandLineOpts(args);
@@ -96,6 +97,6 @@ public class TrMain {
     @Bean
     public TrNode trNode() throws Exception {
         // TODO create this using the new operator
-        return TrUtils.TestUtils.makeNode(9003, false, false, false, true, 0, 0);
+        return TrUtils.TestUtils.makeNode(port++, false, false, false, true, 0, 0);
     }
 }
