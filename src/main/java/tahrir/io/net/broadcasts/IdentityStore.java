@@ -24,9 +24,9 @@ public class IdentityStore {
     private static Logger logger = LoggerFactory.getLogger(IdentityStore.class);
     private File identityStoreFile = new File(TrConstants.IDENTITY_STORE_TEST_FILE_PATH);
     //contains circles in String (label) i.e FOLLOWING, etc. And the id info in UserIdentity.
-    private HashMap<String, Set<UserIdentity>> usersInLabels;
+    private Map<String, Set<UserIdentity>> usersInLabels;
 
-    public HashMap<UserIdentity, Set<String>> labelsOfUser = Maps.newHashMap();
+    public Map<UserIdentity, Set<String>> labelsOfUser = Maps.newHashMap();
 
     private TreeMap<String, Set<UserIdentity>> usersWithNickname = Maps.newTreeMap();
 
@@ -89,7 +89,7 @@ public class IdentityStore {
     }
 
 
-    private void updateOtherMaps(HashMap<String, Set<UserIdentity>> usersInLabel){
+    private void updateOtherMaps(Map<String, Set<UserIdentity>> usersInLabel){
 
         for (Map.Entry<String, Set<UserIdentity>> pairs : usersInLabel.entrySet()){
             for(UserIdentity userIdentity: pairs.getValue()){

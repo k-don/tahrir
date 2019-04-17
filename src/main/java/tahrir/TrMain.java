@@ -97,6 +97,6 @@ public class TrMain {
     @Bean
     public TrNode trNode() throws Exception {
         // TODO create this using the new operator
-        return TrUtils.TestUtils.makeNode(port++, false, false, false, true, 0, 0);
+        return TrUtils.TestUtils.makeNode(++port, false, false, false, true, 0, 0);
     }
 }
