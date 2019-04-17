@@ -32,7 +32,7 @@ class MicroblogAuthorPage extends Reflux.Component {
         return (
             <Modal show={nickname !== null} onHide={this.close} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{nickname}</Modal.Title>
+                    <Modal.Title>Posts {nickname} has made</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {microblogPosts}
