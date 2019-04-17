@@ -127,7 +127,7 @@
                         <!-- TODO This fails the build sometimes -->
                         <!--<lib>${settings.localRepository}/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar</lib>-->
                         <lib>${settings.localRepository}/com/miglayout/miglayout/3.7.4/miglayout-3.7.4.jar</lib>
-                        <lib>${settings.localRepository}/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar</lib>
+                        <lib>${settings.localRepository}/joda-time/joda-time/2.10.1/joda-time-2.10.1.jar</lib>
                         <lib>${settings.localRepository}/com/google/inject/guice/3.0/guice-3.0.jar</lib>
                         <lib>${settings.localRepository}/xom/xom/1.2.5/xom-1.2.5.jar</lib>
                         <lib>${settings.localRepository}/commons-codec/commons-codec/1.6/commons-codec-1.6.jar</lib>
@@ -236,7 +236,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>1.6.2</version>
+			<version>2.10.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
