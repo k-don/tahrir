@@ -47,18 +47,8 @@ public class BroadcastMessagesController {
             broadcastMessages.add(new RestBroadcastMessage(message, nickname, timeCreated));
         }
 
-        // TODO remove this, only for testing
-        addTestMicroblogs(broadcastMessages);
-
         return new ResponseEntity<List<RestBroadcastMessage>>(broadcastMessages, HttpStatus.OK);
     }
-
-    private void addTestMicroblogs(List<RestBroadcastMessage> broadcastMessages) {
-        broadcastMessages.add(new RestBroadcastMessage("Hello world", "sanity", System.currentTimeMillis()));
-        broadcastMessages.add(new RestBroadcastMessage("Foo bar", "sanity", System.currentTimeMillis() - 60 * 1000));
-        broadcastMessages.add(new RestBroadcastMessage("nomel7 lol", "sanity", System.currentTimeMillis() - 2 * 60 * 60 * 1000));
-    }
-
 
 
 }

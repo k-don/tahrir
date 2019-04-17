@@ -16,7 +16,7 @@ import java.io.IOException;
 public class TrMain {
 
 	public static Logger logger = LoggerFactory.getLogger(TrMain.class);
-	private int port = 9003;
+	private static int port = 9003;
 
 	public static void main(final String[] args) {
 		final CommandLineOptions options = readCommandLineOpts(args);
