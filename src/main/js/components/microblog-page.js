@@ -32,8 +32,8 @@ class MicroblogPage extends Reflux.Component {
         return (
             <div>
                 <MicroblogAuthorPage microblogs={microblogs} />
-                <h2 className="microblog-page-name">{name}</h2>
                 <PostForm />
+                <h2 className="microblog-page-name">{name}</h2>
                 <div className="microblog-posts">
                     {microblogPosts}
                 </div>

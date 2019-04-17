@@ -25,7 +25,7 @@ class PostForm extends React.Component {
 
     render() {
         return (
-            <footer className="post-form">
+            <div className="post-form">
                 <Form inline>
                     <FormGroup>
                         <FormControl value={this.state.message} onChange={this.handleChange}
@@ -35,7 +35,7 @@ class PostForm extends React.Component {
                         </Button>
                     </FormGroup>
                 </Form>
-            </footer>
+            </div>
         )
     }
 }
