@@ -78,5 +78,6 @@ public class TrConstants {
 		public static String PLAIN_TEXT = "txt";
 		public static String MENTION = "mtn";
 		public static String ALIAS_ATTRIBUTE = "alias";
+		public static String LANG_ATTRIBUTE = "lang";
 	}
 }

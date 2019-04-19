@@ -1,6 +1,7 @@
 package tahrir.io.net.broadcasts;
 
 import com.google.common.base.Optional;
+import tahrir.io.crypto.TrCrypto;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -51,6 +52,10 @@ public class UserIdentity {
 
     public RSAPublicKey getPubKey() {
         return pubKey;
+    }
+
+    public String getPubKeyBase64() {
+        return TrCrypto.toBase64(pubKey);
     }
 
     public  RSAPrivateKey getPvtKey(){

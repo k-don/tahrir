@@ -59,7 +59,7 @@ public class ParsedBroadcastMessage {
         while (position < plaintextBroadcastMessage.length()) {
             if (plaintextBroadcastMessage.charAt(position) == '@') {
                 int endOfMention = position + 1;
-                while (Character.isLetterOrDigit(plaintextBroadcastMessage.charAt(endOfMention))) {
+                while (endOfMention < plaintextBroadcastMessage.length() && Character.isLetterOrDigit(plaintextBroadcastMessage.charAt(endOfMention))) {
                     endOfMention++;
                 }
                 String mentionNickname = plaintextBroadcastMessage.substring(position+1, endOfMention);
@@ -91,10 +91,10 @@ public class ParsedBroadcastMessage {
     }
 
     private static Element createMentionElement(final UserIdentity identityWithNick) {
-        Attribute publicKey = new Attribute("pubKey", identityWithNick.getPubKey().toString());
+        Attribute alias = new Attribute("alias", identityWithNick.getNick());
         Element mention = new Element(TrConstants.FormatInfo.MENTION);
-        mention.addAttribute(publicKey);
-        mention.appendChild(identityWithNick.getNick());
+        mention.addAttribute(alias);
+        mention.appendChild(identityWithNick.getPubKeyBase64());
         return mention;
     }
 
