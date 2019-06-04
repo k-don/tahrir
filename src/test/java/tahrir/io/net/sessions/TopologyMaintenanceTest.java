@@ -31,7 +31,7 @@ public class TopologyMaintenanceTest {
 		initiator.getPeerManager().enableDebugMaintenance();
 
 		for (int x=0; x<100; x++) {
-			Thread.sleep(200);
+			Thread.sleep(300);
 			if (TrUtils.TestUtils.isConnected(initiator, responder) && TrUtils.TestUtils.isConnected(forwarder1, responder)) {
 				break;
 			}

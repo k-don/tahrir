@@ -39,7 +39,7 @@ public class BroadcastMessageParserTest {
 	public void withMentionsTest() throws Exception {
         RSAPublicKey publicKey = TrCrypto.createRsaKeyPair().a;
         RSAPrivateKey privateKey = TrCrypto.createRsaKeyPair().b;
-        TrNode node = TrUtils.TestUtils.makeNode(9004, false, false, false, true, 0, 0);
+        TrNode node = TrUtils.TestUtils.makeNode(9005, false, false, false, true, 0, 0);
         String userNickname = "user1337";
         node.mbClasses.identityStore.addIdentityToUsersWithNickname(new UserIdentity(userNickname, publicKey, Optional.of(privateKey)));
 
