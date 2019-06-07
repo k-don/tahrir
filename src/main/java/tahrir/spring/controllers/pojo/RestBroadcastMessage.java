@@ -4,8 +4,15 @@ public class RestBroadcastMessage {
     private String message;
     private String nickname;
     private long timeCreated;
+    private String xmlSource;
 
     public RestBroadcastMessage() {}
+
+    public RestBroadcastMessage(String message, long timeCreated, String xmlSource) {
+        this.message = message;
+        this.timeCreated = timeCreated;
+        this.xmlSource = xmlSource;
+    }
 
     public RestBroadcastMessage(String message, long timeCreated) {
         this.message = message;
@@ -40,5 +47,13 @@ public class RestBroadcastMessage {
 
     public void setTimeCreated(long timeCreated) {
         this.timeCreated = timeCreated;
+    }
+
+    public String getXmlSource() {
+        return xmlSource;
+    }
+
+    public void setXmlSource(String xmlSource) {
+        this.xmlSource = xmlSource;
     }
 }
